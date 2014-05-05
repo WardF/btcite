@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>keywords</key>
+	<string></string>
+	<key>txt</key>
+	<string>Overview This goal of this project is to provide the infrastructure for creating a data curation service.  The key components to this service will be a Bittorrent-sync based key, and a curation service which will manage a key as well as relevant metadata.  This will be searchable, and provide multiple sources for the data.
+ </string>
+</dict>
+</plist>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>keywords</key>
+	<string>Attachment </string>
+	<key>txt</key>
+	<string>Outline  MindNode Project File BTCite Goal Data Archival Service/Method Reproducible research. Data sharing Key Characteristics Ease of sharing Persistence of Data No central service necessary. Collaborators can use btsync in the absence of this service. Centeral Service provides search functionality, metadata management. Also provides metadata management. Provides a "Citation Key" 32-character BTSync read-only identifier. The read/write identifier is discarded. Target Audience Open Research Completed Research Only! Immutable Fixed/Maximum Size (?) Public/Community Scientists Requirements Server SQLite btsync Ruby on Rails Client btsync  Processes Requesting a Citation Key 1. Client submits Citation Key, metadata to Server. 2. Server syncs the submitted folder. 3. Server copies files into a new folder.  4. Server generates read-only citation key. 5. Server returns read-only citation key to the client. Withdrawing a Citation Key This process will need to be define, or even determined if it should be possible.  The more I think about it, the more I feel that this system will require an authorization component.  Unidata credentials or something new?    Withdrawing a citation key only means removing it from the search results and the local file storage.  If the data has been synchronized to even a single remote node, it will be impossible to remove altogether. Metadata Author(s) Lastname Firstname Affiliation Date Created Keys BTCite (Read-only) Identifier Original PI-provided Key May be read/write or read-only, but allows for a reference to the original data.  No guarantee is made that THIS data is immutable.  DOI Notes Tags Used for search. </string>
+</dict>
+</plist>
