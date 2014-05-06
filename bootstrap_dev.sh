@@ -8,7 +8,7 @@
 # Update, Install system packages.
 #####
 apt-get update
-apt-get install -y emacs24 ruby1.9.3 sqlite3 libsqlite3-dev nodejs htop
+apt-get install -y emacs24 ruby1.9.3 sqlite3 libsqlite3-dev nodejs htop git
 
 #####
 # Install Ruby-related stuff.
