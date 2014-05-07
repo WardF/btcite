@@ -50,8 +50,10 @@ dpkg-reconfigure --frontend noninteractive tzdata
 #####
 # Clean stuff up
 #####
-mkdir installation_files
-mv * installation_files
+if [ ! -d "/home/vagrant/installation_files" ]; then
+    mkdir installation_files
+    mv * installation_files
+fi
 
 #####
 # Create some scripts
@@ -68,13 +70,13 @@ STORDIR="/vagrant/SyncAPI"
 
 echo '#!/bin/bash' > $SCRIPTFILE
 echo '' >> $SCRIPTFILE
-echo 'set -x' >> $SCRIPTFILE
+#echo 'set -x' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo "CONFDIR=\"$CONFDIR\"" >> $SCRIPTFILE
 echo "STORDIR=\"$STORDIR\"" >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo 'if [ ! -d "$CONFDIR" ]; then' >> $SCRIPTFILE
-echo '   echo "Unable to find $CONFDIR ."' >> $SCRIPTFILE
+echo '   echo "Unable to find configuration directory: $CONFDIR"' >> $SCRIPTFILE
 echo '   exit 1' >> $SCRIPTFILE
 echo 'fi' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
