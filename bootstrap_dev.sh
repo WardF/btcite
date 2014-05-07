@@ -8,7 +8,7 @@
 # Update, Install system packages.
 #####
 apt-get update
-apt-get install -y emacs24 ruby1.9.3 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip
+apt-get install -y emacs24 ruby1.9.3 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap
 
 #####
 # Install Ruby-related stuff.
@@ -81,13 +81,15 @@ echo '   exit 1' >> $SCRIPTFILE
 echo 'fi' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo 'if [ ! -d "$STORDIR" ]; then' >> $SCRIPTFILE
+echo '  echo "Creating data storage directory: $STORDIR"' >> $SCRIPTFILE
 echo '  mkdir -p $STORDIR' >> $SCRIPTFILE
 echo 'fi' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
-
+echo 'echo "Starting btsync service."' >> $SCRIPTFILE
 echo 'BTS=`which btsync`' >> $SCRIPTFILE
 echo 'sudo $BTS --config "$CONFDIR/btsync_config.json"' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
+echo '
 chmod 775 $SCRIPTFILE
 
 #####
