@@ -33,11 +33,13 @@ gem install rails
 # stable x64-linux btsync.
 #####
 
-wget http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable -O btsync.tar.gz
-cp btsync.tar.gz /usr/local/bin
-pushd /usr/local/bin
-tar -zxf btsync.tar.gz
-popd
+if [ ! -f /usr/local/bin/btsync.tar.gz ]; then
+    wget http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable -O btsync.tar.gz
+    mv btsync.tar.gz /usr/local/bin
+    pushd /usr/local/bin
+    tar -zxf btsync.tar.gz
+    popd
+fi
 
 #####
 # Set the proper timezone.
@@ -81,7 +83,7 @@ echo '  mkdir -p $STORDIR' >> $SCRIPTFILE
 echo 'fi' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 
-echo 'BTS=`which btsync`'
+echo 'BTS=`which btsync`' >> $SCRIPTFILE
 echo 'sudo $BTS --config "$CONFDIR/btsync_config.json"' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 chmod 775 $SCRIPTFILE
