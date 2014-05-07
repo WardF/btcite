@@ -66,6 +66,7 @@ fi
 
 SCRIPTFILE="/home/vagrant/btsync_bootstrap.sh"
 CONFDIR="/vagrant/btsync_api_dev"
+CONFARC="/vagrant/btsync_api_dev.gpg"
 STORDIR="/vagrant/SyncAPI"
 
 echo '#!/bin/bash' > $SCRIPTFILE
@@ -73,11 +74,18 @@ echo '' >> $SCRIPTFILE
 #echo 'set -x' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo "CONFDIR=\"$CONFDIR\"" >> $SCRIPTFILE
+echo "CONFARC=\"$CONFARC\"" >> $SCRIPTFILE
 echo "STORDIR=\"$STORDIR\"" >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo 'if [ ! -d "$CONFDIR" ]; then' >> $SCRIPTFILE
-echo '   echo "Unable to find configuration directory: $CONFDIR"' >> $SCRIPTFILE
-echo '   exit 1' >> $SCRIPTFILE
+echo '   if [ ! -f "$CONFARC" ]; then' >> $SCRIPTFILE
+echo '     echo "Unable to find configuration directory or archive."' >> $SCRIPTFILE
+echo '     exit 1' >> $SCRIPTFILE
+echo '   fi' >> $SCRIPTFILE
+echo '' >> $SCRIPTFILE
+echo '  pushd /vagrant' >> $SCRIPTFILE
+echo '  gpg-zip -d "$CONFARC"' >> $SCRIPTFILE
+echo '  popd' >> $SCRIPTFILE
 echo 'fi' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 echo 'if [ ! -d "$STORDIR" ]; then' >> $SCRIPTFILE
