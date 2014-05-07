@@ -86,10 +86,6 @@ echo 'sudo $BTS --config "$CONFDIR/btsync_config.json"' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
 chmod 775 $SCRIPTFILE
 
-
-
-
-
 #####
 # Final Clean Up
 #####
