@@ -89,7 +89,7 @@ echo 'echo "Starting btsync service."' >> $SCRIPTFILE
 echo 'BTS=`which btsync`' >> $SCRIPTFILE
 echo 'sudo $BTS --config "$CONFDIR/btsync_config.json"' >> $SCRIPTFILE
 echo '' >> $SCRIPTFILE
-echo '
+
 chmod 775 $SCRIPTFILE
 
 #####
