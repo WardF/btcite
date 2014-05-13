@@ -28,4 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.vm.box = "WardF/trusty64"
   end
 
+ config.vm.define "plain" do |v|
+    v.vm.box = "WardF/trusty64"
+  end
+
 end

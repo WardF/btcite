@@ -7,27 +7,92 @@
 #####
 # Update, Install system packages.
 #####
-apt-get update
-apt-get install -y emacs24 ruby1.9.3 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links
+if [ ! -d /home/vagrant/installation_files ]; then
+#    apt-get update
+    apt-get install -y emacs24 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links curl libyaml-dev openssl libxml2-dev libxslt1-dev
+fi
+
+#####
+# Clean up provisioning files
+#####
+if [ ! -d "/home/vagrant/installation_files" ]; then
+    mkdir installation_files
+    mv * installation_files
+fi
 
 #####
 # Install Ruby-related stuff.
 #####
 
 ###
-# Update gems
+# Pre-emptively update the users path.
 ###
 
-gem install rubygems-update
-update_rubygems
+echo 'export PATH="$PATH:$HOME/.rvm/bin"' >> /home/vagrant/.profile
+chown vagrant:vagrant /home/vagrant/.profile
+
+echo 'install: --no-rdoc --no-ri' > /home/vagrant/.gemrc
+echo 'update:  --no-rdoc --no-ri' >> /home/vagrant/.gemrc
+chown vagrant:vagrant /home/vagrant/.gemrc
 
 ###
-# Install Gems
+# Install RVM in case we want to use it.
+#
+# We will accomplish this by creating a script that will be run by the
+# 'vagrant' user.
+# 
 ###
 
-gem install rake
-gem install rails
+touch "/home/vagrant/SOURCE_SCRIPTS_DONT_RUN_THEM"
 
+RVMSCRIPT="/home/vagrant/first_install_rvm.sh"
+RUBYVERS="2.1.1"
+
+echo "RVERS=$RUBYVERS" > $RVMSCRIPT 
+echo '' >> $RVMSCRIPT 
+echo 'curl -sSL https://get.rvm.io | bash -s stable' >> $RVMSCRIPT
+echo 'rvm requirements' >> $RVMSCRIPT 
+echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT 
+echo '' >> $RVMSCRIPT 
+echo 'source /home/vagrant/.bash_profile' >> $RVMSCRIPT
+echo 'rvm use $RVERS --default' >> $RVMSCRIPT 
+echo 'gem update' >> $RVMSCRIPT 
+echo 'gem install rails' >> $RVMSCRIPT 
+echo 'gem install rake' >> $RVMSCRIPT 
+echo 'gem install rubygems-update' >> $RVMSCRIPT 
+echo 'update_rubygems' >> $RVMSCRIPT 
+echo '' >> $RVMSCRIPT 
+echo 'echo "Finished."' >> $RVMSCRIPT
+
+###
+# Next, create a profile for use with the
+# rails tutorial book, found at:
+# http://www.railstutorial.org/book/beginning#sec-introduction
+###
+
+RVMSCRIPT="/home/vagrant/second_tutorial_install_rvm.sh"
+RUBYVERS="2.0.0"
+
+echo "RVERS=$RUBYVERS" > $RVMSCRIPT
+echo '' >> $RVMSCRIPT 
+echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT 
+echo '' >> $RVMSCRIPT 
+echo 'rvm use $RVERS@railstutorial_rails_4_0 --create' >> $RVMSCRIPT 
+echo 'gem update --system 2.1.9' >> $RVMSCRIPT 
+echo 'gem install rails --version 4.0.5' >> $RVMSCRIPT 
+echo 'gem install rake' >> $RVMSCRIPT 
+echo 'gem install rubygems-update' >> $RVMSCRIPT 
+echo 'update_rubygems' >> $RVMSCRIPT 
+echo '' >> $RVMSCRIPT 
+echo 'echo "Finished."' >> $RVMSCRIPT 
+
+###
+# Create a script to install the heroku toolbelt.
+# https://toolbelt.heroku.com/debian
+###
+HSCRIPT="/home/vagrant/final_heroku_toolbelt_install.sh"
+echo 'wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh' >> $HSCRIPT
+echo 'echo "Finished."' >> $RVMSCRIPT
 #####
 # Download and untar the latest
 # stable x64-linux btsync.
@@ -46,14 +111,6 @@ fi
 #####
 echo "US/Mountain" | tee /etc/timezone
 dpkg-reconfigure --frontend noninteractive tzdata
-
-#####
-# Clean stuff up
-#####
-if [ ! -d "/home/vagrant/installation_files" ]; then
-    mkdir installation_files
-    mv * installation_files
-fi
 
 #####
 # Create some scripts
