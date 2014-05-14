@@ -13,12 +13,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
-    v.cpus = 2
+    v.cpus = 1
   end
 
   config.vm.provider "parallels" do |v|
     v.memory = 2048
-    v.cpus = 2
+    v.cpus = 1
   end
 
   # Every Vagrant virtual environment requires a box to build off of.
