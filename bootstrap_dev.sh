@@ -158,6 +158,13 @@ echo '' >> $SCRIPTFILE
 chmod 775 $SCRIPTFILE
 
 #####
+# Set up git
+#####
+
+sudo -i -u vagrant git config --global user.name "Ward Fisher"
+sudo -i -u vagrant git config --global user.email "ward.fisher@gmail.com"
+
+#####
 # Final Clean Up
 #####
 chown -R vagrant:vagrant /home/vagrant 
