@@ -9,7 +9,7 @@
 #####
 if [ ! -d /home/vagrant/installation_files ]; then
 #    apt-get update
-    apt-get install -y emacs24 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links curl libyaml-dev openssl libxml2-dev libxslt1-dev
+    apt-get install -y emacs24 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links curl libyaml-dev openssl libxml2-dev libxslt1-dev libpq-dev
 fi
 
 #####
@@ -59,6 +59,7 @@ echo 'rvm use $RVERS --default' >> $RVMSCRIPT
 echo 'gem update' >> $RVMSCRIPT 
 echo 'gem install rails' >> $RVMSCRIPT 
 echo 'gem install rake' >> $RVMSCRIPT 
+echo 'gem install yard' >> $RVMSCRIPT
 echo 'gem install rubygems-update' >> $RVMSCRIPT 
 echo 'update_rubygems' >> $RVMSCRIPT 
 echo '' >> $RVMSCRIPT 
