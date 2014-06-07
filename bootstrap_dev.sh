@@ -46,7 +46,7 @@ chown vagrant:vagrant /home/vagrant/.gemrc
 touch "/home/vagrant/SOURCE_SCRIPTS_DONT_RUN_THEM"
 
 RVMSCRIPT="/home/vagrant/first_install_rvm.sh"
-RUBYVERS="2.1.1"
+RUBYVERS="2.1.2"
 
 echo "RVERS=$RUBYVERS" > $RVMSCRIPT 
 echo '' >> $RVMSCRIPT 
