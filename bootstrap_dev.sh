@@ -45,7 +45,7 @@ chown vagrant:vagrant /home/vagrant/.gemrc
 
 touch "/home/vagrant/SOURCE_SCRIPTS_DONT_RUN_THEM"
 
-RVMSCRIPT="/home/vagrant/first_install_rvm.sh"
+RVMSCRIPT="/home/vagrant/install_rvm_and_ruby.sh"
 RUBYVERS="2.1.1"
 
 echo "RVERS=$RUBYVERS" > $RVMSCRIPT 
@@ -65,35 +65,7 @@ echo 'update_rubygems' >> $RVMSCRIPT
 echo '' >> $RVMSCRIPT 
 echo 'echo "Finished."' >> $RVMSCRIPT
 
-###
-# Next, create a profile for use with the
-# rails tutorial book, found at:
-# http://www.railstutorial.org/book/beginning#sec-introduction
-###
 
-RVMSCRIPT="/home/vagrant/second_tutorial_install_rvm.sh"
-RUBYVERS="2.0.0"
-
-echo "RVERS=$RUBYVERS" > $RVMSCRIPT
-echo '' >> $RVMSCRIPT 
-echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT 
-echo '' >> $RVMSCRIPT 
-echo 'rvm use $RVERS@railstutorial_rails_4_0 --create' >> $RVMSCRIPT 
-echo 'gem update --system 2.1.9' >> $RVMSCRIPT 
-echo 'gem install rails --version 4.0.5' >> $RVMSCRIPT 
-echo 'gem install rake' >> $RVMSCRIPT 
-echo 'gem install rubygems-update' >> $RVMSCRIPT 
-echo 'update_rubygems' >> $RVMSCRIPT 
-echo '' >> $RVMSCRIPT 
-echo 'echo "Finished."' >> $RVMSCRIPT 
-
-###
-# Create a script to install the heroku toolbelt.
-# https://toolbelt.heroku.com/debian
-###
-HSCRIPT="/home/vagrant/final_heroku_toolbelt_install.sh"
-echo 'wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh' >> $HSCRIPT
-echo 'echo "Finished."' >> $RVMSCRIPT
 #####
 # Download and untar the latest
 # stable x64-linux btsync.
@@ -129,7 +101,7 @@ STORDIR="/vagrant/SyncAPI"
 
 echo '#!/bin/bash' > $SCRIPTFILE
 echo '' >> $SCRIPTFILE
-#echo 'set -x' >> $SCRIPTFILE
+
 echo '' >> $SCRIPTFILE
 echo "CONFDIR=\"$CONFDIR\"" >> $SCRIPTFILE
 echo "CONFARC=\"$CONFARC\"" >> $SCRIPTFILE
@@ -169,7 +141,11 @@ sudo -i -u vagrant git config --global push.default simple
 #####
 # Set up .emacs file
 #####
-cat "(set-face-attribute 'default nil :height 130)" >> /home/vagrant/.emacs
+echo "(set-face-attribute 'default nil :height 130)" >> /home/vagrant/.emacs
+echo '(custom-set-variables' >> /home/vagrant/.emacs
+echo " '(inhibit-startup-screen t)" >> /home/vagrant/.emacs
+echo " '(show-paren-mode t)" >> /home/vagrant/.emacs
+echo " '(uniquify-buffer-name-style (quote forward) nil (uniquify)))" >> /home/vagrant/.emacs 
 
 
 #####
