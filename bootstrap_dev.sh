@@ -141,12 +141,12 @@ sudo -i -u vagrant git config --global push.default simple
 #####
 # Set up .emacs file
 #####
+echo "(normal-erase-is-backspace-mode 1)" >> /home/vagrant/.emacs
 echo "(set-face-attribute 'default nil :height 130)" >> /home/vagrant/.emacs
 echo '(custom-set-variables' >> /home/vagrant/.emacs
 echo " '(inhibit-startup-screen t)" >> /home/vagrant/.emacs
 echo " '(show-paren-mode t)" >> /home/vagrant/.emacs
-echo " '(uniquify-buffer-name-style (quote forward) nil (uniquify)))" >> /home/vagrant/.emacs 
-
+echo " '(uniquify-buffer-name-style (quote forward) nil (uniquify)))" >> /home/vagrant/.emacs
 
 #####
 # Final Clean Up
