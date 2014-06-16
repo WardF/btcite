@@ -25,7 +25,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "webserver",primary: true do |v|
     v.vm.provision :shell, :path => "bootstrap_dev.sh"
     v.vm.network "private_network", ip: "10.1.2.11"
-    v.vm.box = "WardF/trusty64"
+    v.vm.box      = "WardF/trusty64"
+    v.vm.hostname = "webserver"
   end
 
  config.vm.define "plain" do |v|
