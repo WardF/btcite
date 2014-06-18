@@ -9,6 +9,7 @@
 #####
 if [ ! -d /home/vagrant/installation_files ]; then
     apt-get update
+    apt-get -y upgrade
     apt-get install -y emacs24 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links curl libyaml-dev openssl libxml2-dev libxslt1-dev libpq-dev
 fi
 
