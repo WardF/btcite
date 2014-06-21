@@ -162,6 +162,24 @@ if [ ! -f "/home/vagrant/sample_app" ]; then
 fi
 
 #####
+# Grab the 'aptana studio' installer, which may need to be
+# installed manually.
+#####
+
+if [ ! -d "/vagrant/Aptana_Studio_3" ]; then
+    STUDIO_FNAME="Aptana_Studio_3_Setup_Linux_x86_64_3.4.2.zip"
+    if [ ! -f "/vagrant/$STUDIO_FNAME" ]; then
+	wget http://download.aptana.com/studio3/standalone/3.4.2/linux/"$STUDIO_FNAME"
+	cp "$STUDIO_FNAME" /vagrant
+    else
+	cp "/vagrant/$STUDIO_FNAME" .
+    fi
+    
+    unzip "$STUDIO_FNAME"
+    rm "$STUDIO_FNAME"
+fi
+
+#####
 # Final Clean Up
 #####
 chown -R vagrant:vagrant /home/vagrant 
