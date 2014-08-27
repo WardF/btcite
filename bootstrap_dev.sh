@@ -41,7 +41,7 @@ chown vagrant:vagrant /home/vagrant/.gemrc
 #
 # We will accomplish this by creating a script that will be run by the
 # 'vagrant' user.
-# 
+#
 ###
 
 touch "/home/vagrant/SOURCE_SCRIPTS_DONT_RUN_THEM"
@@ -49,21 +49,21 @@ touch "/home/vagrant/SOURCE_SCRIPTS_DONT_RUN_THEM"
 RVMSCRIPT="/home/vagrant/install_rvm_and_ruby.sh"
 RUBYVERS="2.1.2"
 
-echo "RVERS=$RUBYVERS" > $RVMSCRIPT 
-echo '' >> $RVMSCRIPT 
+echo "RVERS=$RUBYVERS" > $RVMSCRIPT
+echo '' >> $RVMSCRIPT
 echo 'curl -sSL https://get.rvm.io | bash -s stable' >> $RVMSCRIPT
-echo 'rvm requirements' >> $RVMSCRIPT 
-echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT 
-echo '' >> $RVMSCRIPT 
+echo 'rvm requirements' >> $RVMSCRIPT
+echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT
+echo '' >> $RVMSCRIPT
 echo 'source /home/vagrant/.bash_profile' >> $RVMSCRIPT
-echo 'rvm use $RVERS --default' >> $RVMSCRIPT 
-echo 'gem update' >> $RVMSCRIPT 
-echo 'gem install rails' >> $RVMSCRIPT 
-echo 'gem install rake' >> $RVMSCRIPT 
+echo 'rvm use $RVERS --default' >> $RVMSCRIPT
+echo 'gem update' >> $RVMSCRIPT
+echo 'gem install rails' >> $RVMSCRIPT
+echo 'gem install rake' >> $RVMSCRIPT
 echo 'gem install yard' >> $RVMSCRIPT
-echo 'gem install rubygems-update' >> $RVMSCRIPT 
-echo 'update_rubygems' >> $RVMSCRIPT 
-echo '' >> $RVMSCRIPT 
+echo 'gem install rubygems-update' >> $RVMSCRIPT
+echo 'update_rubygems' >> $RVMSCRIPT
+echo '' >> $RVMSCRIPT
 echo 'echo "Finished."' >> $RVMSCRIPT
 
 
@@ -166,21 +166,20 @@ fi
 # installed manually.
 #####
 
-if [ ! -d "/vagrant/Aptana_Studio_3" ]; then
-    STUDIO_FNAME="Aptana_Studio_3_Setup_Linux_x86_64_3.4.2.zip"
-    if [ ! -f "/vagrant/$STUDIO_FNAME" ]; then
-	wget http://download.aptana.com/studio3/standalone/3.4.2/linux/"$STUDIO_FNAME"
-	cp "$STUDIO_FNAME" /vagrant
-    else
-	cp "/vagrant/$STUDIO_FNAME" .
-    fi
-    
-    unzip "$STUDIO_FNAME"
-    rm "$STUDIO_FNAME"
-fi
+#if [ ! -d "/vagrant/Aptana_Studio_3" ]; then
+#    STUDIO_FNAME="Aptana_Studio_3_Setup_Linux_x86_64_3.4.2.zip"
+#    if [ ! -f "/vagrant/$STUDIO_FNAME" ]; then
+#	wget http://download.aptana.com/studio3/standalone/3.4.2/linux/"$STUDIO_FNAME"
+#	cp "$STUDIO_FNAME" /vagrant
+#    else
+#	cp "/vagrant/$STUDIO_FNAME" .
+#    fi
+
+#    unzip "$STUDIO_FNAME"
+#    rm "$STUDIO_FNAME"
+#fi
 
 #####
 # Final Clean Up
 #####
-chown -R vagrant:vagrant /home/vagrant 
-
+chown -R vagrant:vagrant /home/vagrant
