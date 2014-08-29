@@ -25,12 +25,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "rubydev",primary: true do |v|
     v.vm.provision :shell, :path => "bootstrap_dev.sh"
     v.vm.network "private_network", ip: "10.1.2.11"
-    v.vm.box      = "trusty64"
+    v.vm.box      = "ubuntu/trusty64"
     v.vm.hostname = "rubydev"
   end
 
  config.vm.define "plain" do |v|
-    v.vm.box = "trusty64"
+    v.vm.box = "ubuntu/trusty64"
   end
 
 end
