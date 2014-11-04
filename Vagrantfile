@@ -29,8 +29,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.vm.hostname = "rubydev"
   end
 
- config.vm.define "plain" do |v|
-    v.vm.box = "ubuntu/trusty64"
-  end
-
 end

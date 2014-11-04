@@ -11,6 +11,7 @@ if [ ! -d /home/vagrant/installation_files ]; then
     apt-get update
     apt-get -y upgrade
     apt-get install -y emacs24 sqlite3 libsqlite3-dev nodejs htop git wget zip unzip nmap firefox links curl libyaml-dev openssl libxml2-dev libxslt1-dev libpq-dev
+    apt-get autoremove
 fi
 
 #####
@@ -51,6 +52,7 @@ RUBYVERS="2.1.2"
 
 echo "RVERS=$RUBYVERS" > $RVMSCRIPT
 echo '' >> $RVMSCRIPT
+echo 'gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3' >> $RVMSCRIPT
 echo 'curl -sSL https://get.rvm.io | bash -s stable' >> $RVMSCRIPT
 echo 'rvm requirements' >> $RVMSCRIPT
 echo 'rvm install $RVERS --with-openssl-dir=/usr' >> $RVMSCRIPT
