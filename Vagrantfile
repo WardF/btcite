@@ -13,27 +13,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
-    v.cpus = 1
-  end
-
-  config.vm.provider "parallels" do |v|
-    v.memory = 2048
-    v.cpus = 1
+    v.cpus = 2
   end
 
  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.define "rubydev2",primary: true do |v|
-    v.vm.provision :shell, :path => "bootstrap_dev.sh"
-    #v.vm.network "private_network", ip: "10.1.2.11"
-    v.vm.box      = "larryli/utopic64"
-    v.vm.hostname = "rubydev"
-  end
+  #config.vm.define "rubydev2",primary: true do |v|
+  #  v.vm.provision :shell, :path => "bootstrap_dev.sh"
+  #  #v.vm.network "private_network", ip: "10.1.2.11"
+  #  v.vm.box      = "larryli/utopic64"
+  #  v.vm.hostname = "rubydev"
+  #end
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.define "rubydev",primary: true do |v|
     v.vm.provision :shell, :path => "bootstrap_dev.sh"
     v.vm.network "private_network", ip: "10.1.2.11"
-    v.vm.box      = "ubuntu/trusty64"
+    v.vm.box      = "larryli/utopic64"
     v.vm.hostname = "rubydev"
   end
 
