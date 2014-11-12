@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.vm.provision :shell, :path => "bootstrap_dev.sh"
     v.vm.network "private_network", ip: "10.1.2.11"
     v.vm.network "forwarded_port", guest: 3000, host: 3000
-    v.vm.box      = "chef/ubuntu-14.10"
+    v.vm.box      = "larryli/utopic64"
     v.vm.hostname = "rubydev"
   end
 
